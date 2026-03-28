@@ -1,2 +1,41 @@
-HELLO
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>CRM App 啟動測試</title>
+    <style>
+        .btn { padding: 15px 25px; font-size: 18px; cursor: pointer; background: #007bff; color: white; border: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
 
+    <h1>啟動 CRM App 測試頁面</h1>
+
+    <!-- 方式 A: 直接連結 (最穩定) -->
+    <p>
+        <a href="crm://flw/share?id=9527" class="btn">點我打開 CRM 並分享資料</a>
+    </p>
+
+    <!-- 方式 B: 使用 JavaScript 觸發 (適合邏輯處理後跳轉) -->
+    <p>
+        <button onclick="triggerApp()" class="btn" style="background: #28a745;">JS 腳本觸發跳轉</button>
+    </p>
+
+    <script>
+        function triggerApp() {
+            const targetUri = "crm://flw/share?source=web_button";
+            
+            // 嘗試跳轉
+            window.location.href = targetUri;
+
+            // 選擇性功能：如果 2 秒後沒反應，代表沒裝 App，引導至商店
+            setTimeout(function() {
+                if (confirm("看起來您還沒安裝 CRM App，要去下載嗎？")) {
+                    window.location.href = "https://google.com";
+                }
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>
