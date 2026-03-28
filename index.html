@@ -22,6 +22,12 @@
     </p>
 
     <script>
+        window.onload = function() {
+        // 頁面載入完成後 0.5 秒自動執行
+            setTimeout(function() {
+                window.location.href = "crm://flw/share?source=auto_redirect";
+            }, 500);
+        };
         function triggerApp() {
             const targetUri = "crm://flw/share?source=web_button";
             
@@ -31,7 +37,7 @@
             // 選擇性功能：如果 2 秒後沒反應，代表沒裝 App，引導至商店
             setTimeout(function() {
                 if (confirm("看起來您還沒安裝 CRM App，要去下載嗎？")) {
-                    window.location.href = "https://google.com";
+                    
                 }
             }, 2000);
         }
